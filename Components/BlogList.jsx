@@ -1,6 +1,7 @@
 import React from "react";
 import { assets,blog_data } from "@/Assets/assets";
 import BlogItem from "./BlogItem";
+// import { it } from "node:test";
 
 const BlogList = ({blog}) => {
 
@@ -19,7 +20,7 @@ const BlogList = ({blog}) => {
                 {blog_data.map((item, index) => {
                     if (menu === "All" || item.category === menu) {
                         return (
-                            <BlogItem key={index} title={item.title} description={item.description} category={item.category} image={item.image} />
+                            <BlogItem key={index} id={item.id} title={item.title} description={item.description} category={item.category} image={item.image} />
                         );
                     }
                     return null;
