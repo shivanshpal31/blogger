@@ -5,6 +5,21 @@ import { assets } from "@/Assets/assets";
 
 const page = () => {
   const [image, setImage] = React.useState(null);
+  const [data, setData] = React.useState({
+    title: "",
+    description: "",
+    category: "Startup",
+    author: "Admin",
+    authorImage:
+      "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWRtaW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+  });
+
+  const onChangeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((data) => ({ ...data, [name]: value }));
+    console.log(data);
+  };
 
   return (
     <>
@@ -26,6 +41,9 @@ const page = () => {
         />
         <p className="text-xl mt-4">Blog Title</p>
         <input
+          onChange={onChangeHandler}
+          value={data.title}
+          name="title"
           type="text"
           className="w-full sm:w-[500px] mt-4 px-4 py-2 border border-gray-300 rounded-md"
           name=""
@@ -34,14 +52,33 @@ const page = () => {
         />
 
         <p className="text-xl mt-4">Blog Description</p>
-        <input
+        <textarea
           type="text-area"
           className="w-full sm:w-[500px] mt-4 px-4 py-2 border border-gray-300 rounded-md"
-          name=""
-          req
-          placeholder="Type your Blog Title"
+          onChange={onChangeHandler}
+          value={data.description}
+          name="description"
+          placeholder="Type your Blog Description"
           id=""
+          rows={6}
         />
+
+        <p className="text-xl mt-4">Blog Category</p>
+        <select
+          className="w-full sm:w-[500px] mt-4 px-4 py-2 border border-gray-300 rounded-md"
+          name=""
+          id=""
+          onChange={onChangeHandler}
+          value={data.category}
+          name="category"
+        >
+          <option value="">Start Up</option>
+          <option value="technology">Technology</option>
+          <option value="lifestyle">Lifestyle</option>
+          <option value="travel">Travel</option>
+        </select>
+        <br />
+        <button className="mt-8 w-40 h-12 bg-black text-white">Add</button>
       </form>
     </>
   );
