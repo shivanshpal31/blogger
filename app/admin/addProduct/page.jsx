@@ -46,7 +46,7 @@ const page = () => {
         <label htmlFor="image">
           <Image
             className="mt-4"
-            src={!image ? assets.upload_area : URL.createObjectURL(image)}
+            src={!image ? assets.upload_area : URL.createObjectURL(image)} 
             width={140}
             height={70}
             alt="upload"
