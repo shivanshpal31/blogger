@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { assets } from "@/Assets/assets";
+import axios from "axios";
 
 const page = () => {
   const [image, setImage] = React.useState(null);
@@ -21,9 +22,25 @@ const page = () => {
     console.log(data);
   };
 
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("category", data.category);
+    formData.append("author", data.author);
+    formData.append("authorImage", data.authorImage);
+    formData.append("image", image);
+    const response = await axios.post("/api/blogs", formData);
+      if (response.data.success) {
+        toast.success("Blog Added Successfully");
+      else {
+        toast.error("Failed to add Blog");
+      }
+
   return (
     <>
-      <form action="" className="pt-5 px-5 sm:pt-12 sm:pl-16">
+      <form onSubmit={onSubmitHandler} action="" className="pt-5 px-5 sm:pt-12 sm:pl-16">
         <p>Upload Thumbnail</p>
         <label htmlFor="image">
           <Image
