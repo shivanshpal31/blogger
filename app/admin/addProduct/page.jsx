@@ -59,7 +59,7 @@ const page = () => {
         />
         <p className="text-xl mt-4">Blog Title</p>
         <input
-          onChange={onChangeHandler}
+          onChange={onChangeHandler} 
           value={data.title}
           name="title"
           type="text"
