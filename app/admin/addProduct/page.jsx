@@ -32,10 +32,17 @@ const page = () => {
     formData.append("authorImage", data.authorImage);
     formData.append("image", image);
     const response = await axios.post("/api/blogs", formData);
-      if (response.data.success) 
+      if (response.data.success) {
         toast.success("Blog Added Successfully");
-      else 
+        setImage(null);
+        setData({
+          title: "",
+          description: "",
+          category: "Startup",
+        });
+      } else {
         toast.error("Failed to add Blog");
+      }
     };
       
 

@@ -1,11 +1,25 @@
-import React from "react";
+import React, { use } from "react";
 import { assets,blog_data } from "@/Assets/assets";
 import BlogItem from "./BlogItem";
+import axios from "axios";
 // import { it } from "node:test";
 
 const BlogList = ({blog}) => {
 
     const [menu,setMenu] = React.useState("All");
+    const [blogs,setBlogs] = React.useState([]);
+    const fetchBlogs = async () => {
+        try {
+            const response = await axios.get("/api/blog");
+            setBlogs(response.data.blogs);
+        } catch (error) {
+            console.error("Error fetching blogs:", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchBlogs();
+    },[]);
 
 
     return (

@@ -4,17 +4,20 @@ import { writeFile } from "fs/promises";
 import fs from "fs";
 import BlogModel from "../../../lib/models/BlogModel";
 
-const LoadDB = async () => {
-    await connectDB();
-}
+// const LoadDB = async () => {
+//     await connectDB();
+// }
 
-LoadDB();
+// LoadDB();
 
+// API end point to get all blog posts
 export async function GET(request) {
-    console.log("Blog GET hit");
-    return NextResponse.json({ message: "Hello from the Blog API!" });
+    console.log("All Blog GET hit");
+    const blogs = await BlogModel.find({});
+    return NextResponse.json({ success: true, blogs });
 }
 
+// Handle POST request to create a new blog post
 export async function POST(request) {
     console.log("Blog POST hit");
     const formData = await request.formData();
