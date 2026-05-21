@@ -13,7 +13,7 @@ const BlogList = ({blog}) => {
             const response = await axios.get("/api/blog");
             setBlogs(response.data.blogs);
         } catch (error) {
-            console.error("Error fetching blogs:", error);
+            console.error("Error fetching blogs:", error); 
         }
     }
 
