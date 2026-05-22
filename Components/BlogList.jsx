@@ -13,7 +13,7 @@ const BlogList = ({blog}) => {
             const response = await axios.get("/api/blog");
             setBlogs(response.data.blogs);
         } catch (error) {
-            console.error("Error fetching blogs:", error); 
+            console.error("Error fetching blogs:", error);
         }
     }
 
@@ -34,7 +34,7 @@ const BlogList = ({blog}) => {
                 {blog_data.map((item, index) => {
                     if (menu === "All" || item.category === menu) {
                         return (
-                            <BlogItem key={index} id={item.id} title={item.title} description={item.description} category={item.category} image={item.image} />
+                            <BlogItem key={index} id={item._id} title={item.title} description={item.description} category={item.category} image={item.image} />
                         );
                     }
                     return null;
