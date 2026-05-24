@@ -37,7 +37,7 @@ const BlogList = ({blog}) => {
                             <BlogItem key={index} id={item._id} title={item.title} description={item.description} category={item.category} image={item.image} />
                         );
                     }
-                    return null;
+                    return null; 
                 })}
             </div>
         </div>
