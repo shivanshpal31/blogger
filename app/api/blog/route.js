@@ -8,7 +8,20 @@ import BlogModel from "../../../lib/models/BlogModel";
 //     await connectDB();
 // }
 
-// LoadDB();
+LoadDB();
+
+export async function GET(request) {
+
+    const blogId = request.nextUrl.searchParams.get("id");
+
+    if(blogId) {
+        console.log("Single Blog GET hit");
+        const blog = await BlogModel.findById(blogId);
+        return NextResponse.json({ success: true, blog });
+    }
+    const blogs = await BlogModel.find({});
+    return NextResponse.json({ success: true, blogs });
+}
 
 // API end point to get all blog posts
 export async function GET(request) {

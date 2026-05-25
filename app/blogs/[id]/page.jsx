@@ -10,13 +10,20 @@ const page = ({params}) => {
     
     const resolvedParams = React.use(params);
     const fetchBlogData = async () => {
-        for (let i = 0; i < blog_data.length; i++) {
-            if(Number(resolvedParams.id) == blog_data[i].id){
-                setData(blog_data[i]);
-                break;
-                console.log(data);
+        // for (let i = 0; i < blog_data.length; i++) {
+        //     if(Number(resolvedParams.id) == blog_data[i].id){
+        //         setData(blog_data[i]);
+        //         break;
+        //         console.log(data);
+        //     }
+        // }
+
+        const response = await axios.get(`/api/blog`,{
+            params: {
+                id: params.id
             }
-        }
+        })
+        setData(response.data.blog);
     };
 
     React.useEffect(() => {
