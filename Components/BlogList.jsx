@@ -44,4 +44,4 @@ const BlogList = ({blog}) => {
     );
 };
 
-export default BlogList;
+export default BlogList; 
