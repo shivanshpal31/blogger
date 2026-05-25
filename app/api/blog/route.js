@@ -3,6 +3,7 @@ import connectDB from "../../../lib/config/db";
 import { writeFile } from "fs/promises";
 import fs from "fs";
 import BlogModel from "../../../lib/models/BlogModel";
+const fs = require("fs");
 
 // const LoadDB = async () => {
 //     await connectDB();
@@ -61,4 +62,20 @@ export async function POST(request) {
     
 
     return NextResponse.json({ success: true, message: "Blog post created successfully!" });
+}
+
+//Creating API end point to delete a blog post
+export async function DELETE(request) {
+    console.log("Blog DELETE hit");
+    const blogId = request.nextUrl.searchParams.get("id");
+    const blog= await BlogModel.findById(blogId);
+    fs.unlink(`./public/uploads/${blog.image}`, (err) => {
+        if (err) {
+            console.error("Error deleting image file:", err);
+        } else {
+            console.log("Image file deleted successfully");
+        }
+    });
+    await BlogModel.findByIdAndDelete(blogId);
+    return NextResponse.json({ success: true, message: "Blog post deleted successfully!" });
 }
