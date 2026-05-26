@@ -50,19 +50,8 @@ const page = ({params}) => {
             <div className="mx-6 max-w-[800px] md:mx-auto mt-[-100px] mb-10">
                 <Image className="border-4 border-white" src={data.image} alt="blog" width={1280} height={720}/>
                 <h1 className="my-8 text-[26px] font-semibold">Introduction:</h1>
-                <p className="text-lg text-gray-700">{data.description}</p>
-                <h3 className="my-5 text-[18px] font-semibold">Step 1: Self-Reflection and Goal Setting</h3>
-                <p className="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, eos rerum. Dolore voluptatibus voluptatem repellat est nisi odit voluptates sequi cum, odio cupiditate. Excepturi maiores veniam officiis fugit repellendus a?</p>
-
-                <h3 className="my-5 text-[18px] font-semibold">Step 2: Self-Reflection and Goal Setting</h3>
-                <p className="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, eos rerum. Dolore voluptatibus voluptatem repellat est nisi odit voluptates sequi cum, odio cupiditate. Excepturi maiores veniam officiis fugit repellendus a?</p>
-            
-                <h3 className="my-5 text-[18px] font-semibold">Step 3: Self-Reflection and Goal Setting</h3>
-                <p className="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, eos rerum. Dolore voluptatibus voluptatem repellat est nisi odit voluptates sequi cum, odio cupiditate. Excepturi maiores veniam officiis fugit repellendus a?</p>
-
-                <h3 className="my-5 text-[18px] font-semibold">Conclusion: </h3>
-                <p className="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, eos rerum. Dolore voluptatibus voluptatem repellat est nisi odit voluptates sequi cum, odio cupiditate. Excepturi maiores veniam officiis fugit repellendus a?</p>
-
+                {/* <p className="text-lg text-gray-700">{data.description}</p> */}
+                <div className="blog-content" dangerouslySetInnerHTML={{ __html: data.description }} />
                 <div className="my-10">
                     <p className="text-black font-bold my-4">Share This Article On Social Media</p>
                     <div className="flex gap-4">

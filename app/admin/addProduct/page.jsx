@@ -39,7 +39,7 @@ const page = () => {
           title: "",
           description: "",
           category: "Startup",
-        });
+        }); 
       } else {
         toast.error("Failed to add Blog");
       }

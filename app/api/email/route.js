@@ -18,3 +18,22 @@ export async function POST(request) {
     await EmailModel.create(emailData);
     return NextResponse.json({ success: true, message: "Email saved successfully!" });
 }
+
+export async function GET() {
+    console.log("Email GET hit");
+    const emails = await EmailModel.find({});
+    return NextResponse.json({ success: true, data: emails });
+}
+
+export async function DELETE(request) {
+    console.log("Email DELETE hit");
+    // const { searchParams } = new URL(request.url);
+    const id = request.nextUrl.searchParams.get("id");
+
+    if (!id) {
+        return NextResponse.json({ success: false, message: "ID is required for deletion." }, { status: 400 });
+    }
+
+    await EmailModel.findByIdAndDelete(id);
+    return NextResponse.json({ success: true, message: "Email deleted successfully!" });
+}
