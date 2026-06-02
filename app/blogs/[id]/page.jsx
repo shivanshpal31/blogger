@@ -29,7 +29,7 @@ const page = ({params}) => {
     React.useEffect(() => {
         fetchBlogData();
     }, [resolvedParams.id]);
-
+   
     return (
         data?<>
         <div>
